@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+{% if objects %}
+    {% for obj in objects %}
+
+    <div class="card" style="width: auto; background: blue;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" style=" background-color: #000fa6; color: #fff"><a href="{{ url_for('post_id', id=obj.id) }}">{{ obj.title }}</a></li>
+        <li class="list-group-item">{{ obj.slug }}</li>
+        <li class="list-group-item text-end"><small>{{ obj.date.strftime('%Y-%m-%d %H:%M:%S') }}</small></li>
+      </ul>
+    </div><br>
+    {% endfor %}
+{% else %}
+<h3>POSTS ety NO</h3>
+{% endif %}
+{% endblock %}

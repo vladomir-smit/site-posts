@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>{{ title }}</h1>
+    <a href="{{ url_for('post_update', id=object[0][0]) }}">[изменить]</a>
+    <a href="{{ url_for('post_delete', id=object[0][0]) }}">[удалить]</a>
+
+    <div class="card" style="width: auto; background: blue;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center" style=" background-color: #000fa6; color: #fff">{{ object[0][1] }}</li>
+          <li class="list-group-item"><pre style="white-space: pre-wrap;">{{ object[0][3] }}</pre></li>
+          <li class="list-group-item text-end"><small>{{ object[0][4].date() }}</small></li>
+      </ul>
+    </div><br>
+
+</div>
+{% endblock %}

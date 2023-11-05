@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<div>
+    <h1>{{ title }}</h1>
+
+<form method='POST'>
+<p>{{ form.csrf_token }}</p>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+<p>{{ form.title.label }}<br>{{ form.title(size=72) }}</p>
+<p>{{ form.slug.label }}<br>{{ form.slug(size=72) }}</p>
+<p>{{ form.text.label }}<br>{{ form.text(size=16, cols=75, rows=10) }}</p>
+<p>{{ form.submit(value="Обнавить") }}</p>
+</form>
+</div>
+{% endblock %}
